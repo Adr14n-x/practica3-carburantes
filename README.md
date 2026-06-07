@@ -2,18 +2,60 @@
 
 Proyecto Python que consulta la API REST de Precios de Carburantes del Ministerio para la Transición Ecológica (MITERD).
 
-## Instalación (Windows)
+---
+
+## Requisitos previos
+
+### 1. Instalar Python 3.12
+
+Descarga el instalador desde la web oficial:
+
+```
+https://www.python.org/downloads/release/python-3120/
+```
+
+Durante la instalación marca la opción **"Add Python to PATH"** antes de continuar.
+
+Verifica que quedó bien instalado abriendo PowerShell y ejecutando:
 
 ```powershell
-# Desde la raíz del proyecto
+python --version
+```
+
+Debe mostrar `Python 3.12.x`.
+
+### 2. Instalar uv
+
+`uv` es el gestor de entornos y dependencias que usa este proyecto. Instálalo con:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Cierra y vuelve a abrir PowerShell para que se actualice el PATH. Verifica:
+
+```powershell
+uv --version
+```
+
+### 3. Clonar el repositorio
+
+```powershell
+git clone https://github.com/Adr14n-x/practica3-carburantes.git
+cd practica3-carburantes
+```
+
+Si no tienes Git instalado, descárgalo desde `https://git-scm.com/download/win`.
+
+### 4. Instalar las dependencias
+
+Desde la raíz del proyecto:
+
+```powershell
 uv sync
 ```
 
-Si no tienes `uv` instalado:
-
-```powershell
-pip install uv
-```
+Esto crea automáticamente un entorno virtual `.venv` e instala todos los paquetes necesarios.
 
 ---
 
@@ -67,16 +109,17 @@ Para saber tu IP: ejecuta `ipconfig` y busca "Dirección IPv4".
 
 ```
 practica3-carburantes/
-├── pyproject.toml           # dependencias unificadas (uv)
-├── .python-version          # Python 3.12
+├── pyproject.toml           # dependencias del proyecto
+├── .python-version          # versión de Python requerida (3.12)
+├── requirements.txt
 ├── README.md
 ├── actividad1/
 │   ├── consultas_api.py     # script CLI con 3 consultas
-│   └── salidas/             # CSVs generados
+│   └── salidas/             # CSVs generados al ejecutar
 │       ├── consulta1_castilla_leon.csv
 │       ├── consulta2_postes_castellon_g95e5.csv
 │       └── consulta3_cullar_20260212.csv
 └── actividad2/
-    ├── app.py               # interfaz Streamlit (4 pestañas)
-    └── api_client.py        # cliente HTTP, limpieza y caché
+    ├── app.py               # interfaz Streamlit con 4 pestañas
+    └── api_client.py        # cliente HTTP y funciones de la API
 ```
