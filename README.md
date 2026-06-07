@@ -63,31 +63,6 @@ Para saber tu IP: ejecuta `ipconfig` y busca "Dirección IPv4".
 
 ---
 
-## ⚠️ Geolocalización: HTTPS obligatorio
-
-La pestaña **"Cercanas a mi ubicación"** usa la API de geolocalización del navegador, que **solo funciona en contexto seguro (HTTPS) o en localhost**.
-
-| Acceso | ¿Funciona la geolocalización? |
-|---|---|
-| `http://localhost:8501` (PC) | ✅ Sí |
-| `http://192.168.x.x:8501` (móvil, HTTP) | ❌ Bloqueado por el navegador |
-| URL HTTPS (túnel) | ✅ Sí |
-
-### Túnel HTTPS con cloudflared
-
-1. Descarga cloudflared desde `https://github.com/cloudflare/cloudflared/releases`
-2. Inicia la app:
-   ```powershell
-   uv run streamlit run actividad2/app.py
-   ```
-3. En otra terminal, abre el túnel:
-   ```powershell
-   cloudflared tunnel --url http://localhost:8501
-   ```
-4. cloudflared mostrará una URL pública tipo `https://xxxx.trycloudflare.com`.
-
----
-
 ## Estructura del proyecto
 
 ```

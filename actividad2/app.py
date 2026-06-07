@@ -18,16 +18,16 @@ import api_client as api
 
 st.set_page_config(
     page_title="Carburantes España",
-    page_icon="⛽",
+    page_icon="https://www.idae.es/themes/custom/idae/favicon.ico",
     layout="wide",
 )
-st.title("⛽ Precios de Carburantes — España")
+st.title("Precios de Carburantes — España")
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    "🗺️ Por Comunidad Autónoma",
-    "⚓ Postes Marítimos",
-    "📅 Provincia · Fecha · Carburante",
-    "📍 Cercanas a mi ubicación",
+    "Por Comunidad Autónoma",
+    "Postes Marítimos",
+    "Provincia · Fecha · Carburante",
+    "Cercanas a mi ubicación",
 ])
 
 
@@ -166,8 +166,7 @@ with tab4:
     st.subheader("Estaciones más cercanas a mi ubicación")
     st.info(
         "Pulsa **Obtener ubicación** para que el navegador te localice. "
-        "Si estás en HTTP (no HTTPS) el navegador bloqueará la petición → "
-        "usa las coordenadas manuales o consulta el README para activar HTTPS con cloudflared."
+        "Si el navegador bloquea la petición, introduce las coordenadas manualmente."
     )
 
     loc = streamlit_geolocation()
@@ -199,7 +198,7 @@ with tab4:
         # Mapa combinando posición del usuario y estaciones cercanas
         usuario = pd.DataFrame([{
             "Latitud": lat_usr, "Longitud": lon_usr,
-            "Rótulo": "📍 Mi ubicación", "tipo": "Yo",
+            "Rótulo": "Mi ubicación", "tipo": "Yo",
         }])
         estaciones_plot = df_cerca[["Latitud", "Longitud", "Rótulo"]].copy()
         estaciones_plot["tipo"] = "Estación"
